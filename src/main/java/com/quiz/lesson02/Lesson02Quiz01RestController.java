@@ -9,17 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.quiz.lesson02.bo.StoreBO;
 import com.quiz.lesson02.domain.Store;
 
-@RestController
+@RestController // @Controller + @ResponseBody
 public class Lesson02Quiz01RestController {
 
-	@Autowired
-	private StoreBO storeBO;
+	@Autowired // DI 
+	private StoreBO storeBO; // 은닉화는 관례적으로 넣어줌 / storeBO 헷갈리지 않게 소문자로  
 	
 	// http://localhost/lesson02/quiz01
-	@RequestMapping("/lesson02/quiz02")
+	@RequestMapping("/lesson02/quiz01")
 	public List<Store> quiz01() {
-		List<Store> storeList = storeBO.getStoreList();
-		
-		return storeList;
+		return storeBO.getStoreList(); // list json => response
 	}
 }
