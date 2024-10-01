@@ -3,6 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.quiz.lesson03.mapper.RealEstateMapper">
+ 	<!-- 문제 3강 1번 -->
  	<select id="selectRealEstateById" parameterType="int" resultType="com.quiz.lesson03.domain.RealEstate">
  	SELECT 
 	 	`id`
@@ -18,6 +19,104 @@
  		`real_estate`
  	WHERE
  		`id`= #{id}		
+ 	</select>
+ 	
+ 	<!-- 문제 3강 2번 -->
+ 	
+ 	<select id="selectRealEstateListByRentPrice" 
+		 	parameterType="Integer" 
+		 	resultType="com.quiz.lesson03.domain.RealEstate">
+ 	 	SELECT 
+	 	`id`
+		,`realtorId`
+		,`address`
+		,`area`
+		,`type`
+		,`price`
+		,`rentPrice`
+		,`createdAt`
+		,`updatedAt`
+ 	FROM
+ 		`real_estate`
+ 	WHERE
+ 		<![CDATA[
+ 		`rentPrice` < #{rentPrice}	
+ 		]]>		
+ 	</select>
+ 	<select id="selectRealEstateListByAreaPrice" 
+ 			parameterType="map"
+ 			resultType="com.quiz.lesson03.domain.RealEstate">
+ 	 	 SELECT 
+	 	`id`
+		,`realtorId`
+		,`address`
+		,`area`
+		,`type`
+		,`price`
+		,`rentPrice`
+		,`createdAt`
+		,`updatedAt`
+ 	FROM
+ 		`real_estate`
+ 	WHERE
+ 		<![CDATA[
+ 		`type`= '매매'
+ 		AND `area` >= #{area}
+ 		AND `price` <= #{price}
+ 		]]>	
+ 	</select>
+ 	
+ 	<select id="insertRealEstate" parameterType="com.quiz.lesson03.domain.RealEstate">
+ 	INSERT INTO `real_estate`
+		(
+		`realtorId`
+		,`address`
+		,`area`
+		,`type`
+		,`price`
+		,`rentPrice`
+		,`createdAt`
+		,`updatedAt`
+		)
+	VALUES
+		(
+		  #{realtorId}
+		 ,#{address}
+		 ,#{area}
+		 ,#{type}
+		 ,#{price}
+		 ,#{rentPrice}
+		 ,NOW()
+		 ,NOW()	
+		)
+ 	</select>
+ 	<select id="insertRealEstateAsFiled" parameterType="map">
+ 	 	INSERT INTO `real_estate`
+		(
+		`realtorId`
+		,`address`
+		,`area`
+		,`type`
+		,`price`
+		,`rentPrice`
+		,`createdAt`
+		,`updatedAt`
+		)
+	VALUES
+		(
+		  #{realtorId}
+		 ,#{address}
+		 ,#{area}
+		 ,#{type}
+		 ,#{price}
+		 ,#{rentPrice}
+		 ,NOW()
+		 ,NOW()	
+		)
+ 	
+ 	
+ 	
+ 	
  	</select>
  </mapper>
  

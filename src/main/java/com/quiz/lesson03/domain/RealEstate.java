@@ -12,6 +12,7 @@ public class RealEstate {
 	private Integer rentPrice;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
+	
 	public int getId() {
 		return id;
 	}
