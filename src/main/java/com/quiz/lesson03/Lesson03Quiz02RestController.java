@@ -32,9 +32,12 @@ public class Lesson03Quiz02RestController {
 			@RequestParam("realtor_id") int realtorId 
 			){
 	int rowCount = realEstateBO.addRealEstateAsField(
-				realtorId, "썅떼빌리버 오피스텔 814호", 
-				45, "월세",
-				100000, 120);
+				realtorId, 
+				"썅떼빌리버 오피스텔 814호", 
+				45, 
+				"월세",
+				100000, 
+				120);
 	return "입력 성공 : " + rowCount;
 	}
 }
