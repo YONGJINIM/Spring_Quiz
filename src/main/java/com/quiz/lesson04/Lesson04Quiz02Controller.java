@@ -21,7 +21,7 @@ public class Lesson04Quiz02Controller {
 	
 	// 추가 확인
 	// http://localhost:8080/lesson04/quiz02/add-realtor-view
-	@GetMapping("/add-realtor-view")
+	@GetMapping("/add-realtor-view") 
 	public String addRealtorView() {
 		return "lesson04/addRealtor";
 	}
