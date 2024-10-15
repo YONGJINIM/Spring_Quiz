@@ -21,7 +21,7 @@ public class Lesson05QuizController {
 	
 	@GetMapping("/quiz02")
 	public String quiz02(Model model) {
-		
+
 		// List<musicRanking>
 		List<String> musicRanking = new ArrayList<>();
 		musicRanking.add("강남스타일");
